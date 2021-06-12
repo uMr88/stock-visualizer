@@ -19,9 +19,9 @@ df=(df[df['Open'] > 1])
 
 
 print(df.shape)
-df.to_csv('NSE10.csv')
+df.to_csv('NSE1.csv')
 
-df1 = pd.read_csv('NSE8.csv')
+df1 = pd.read_csv('NSE1.csv')
 
 
 print(df1.Gross.value_counts())
