@@ -12,17 +12,11 @@ interval = '1d' # 1d, 1m
 query_string = f'https://query1.finance.yahoo.com/v7/finance/download/{ticker}?period1={period1}&period2={period2}&interval={interval}&events=history&includeAdjustedClose=true'
 
 df = pd.read_csv(query_string)
-print(df.shape)
-
-
 df=(df[df['Open'] > 1])
-
-
-print(df.shape)
 df.to_csv('NSE1.csv')
 
 df1 = pd.read_csv('NSE1.csv')
-
+df1['Gross'] = ((df1['Close'] - df1['Open'])/df1['Open']).round(2)
 
 print(df1.Gross.value_counts())
 df2 = df1.value_counts(df1.Gross).to_frame().reset_index()
